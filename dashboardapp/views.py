@@ -170,7 +170,6 @@ def approve_answer(request, id):
             return redirect('learn')
     else:
         form = AnswerForm()
-    title = "approve"
     return render(request, 'all-pages/answer.html',{"form":form, "id":id,'question':question,'answer':answer} )
         
 def logIn(request):
