@@ -1,0 +1,265 @@
+{% extends 'base.html' %} 
+{% load static%}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+   <title>HelpDesk Automated</title>
+   <link rel="stylesheet" href="/static/css/index.css">
+   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> -->
+   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+   <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+   <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<style>
+/* Media Queries: Tablet Landscape */
+@media screen and (max-width: 1060px) {
+    #primary { width:67%; }
+    #secondary { width:30%; margin-left:3%;}  
+}
+
+/* Media Queries: Tabled Portrait */
+@media screen and (max-width: 768px) {
+    #primary { width:100%; }
+    #secondary { width:100%; margin:0; border:none; }
+}
+/* Search */
+input {
+	outline: none;
+}
+input[type=search] {
+	-webkit-appearance: textfield;
+	box-sizing: content-box;
+	font-family: inherit;
+	font-size: 100%;
+}
+input::-webkit-search-decoration,
+input::-webkit-search-cancel-button {
+	display: none; 
+}
+input[type=search] {
+	background: #ffffff url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
+	border: solid 1px #ccc;
+	padding: 6px 10px 6px 28px;
+	width: 110px;
+	margin-left: 20px;
+	-webkit-border-radius: 10em;
+	-moz-border-radius: 10em;
+	border-radius: 10em;
+	
+	-webkit-transition: all .5s;
+	-moz-transition: all .5s;
+	transition: all .5s;
+}
+input[type=search]:focus {
+	width: 130px;
+	background-color: #fff;
+	border-color: #66CC75;
+	margin-left: 20px;
+	-webkit-box-shadow: 0 0 5px rgba(109,207,246,.5);
+	-moz-box-shadow: 0 0 5px rgba(109,207,246,.5);
+	box-shadow: 0 0 5px rgba(109,207,246,.5);
+}
+input:-moz-placeholder {
+	color: #999;
+}
+input::-webkit-input-placeholder {
+	color: #999;
+}
+h2{
+   margin-top: 30px;
+   text-align: center;
+}
+h6{
+   text-align: center;
+}
+footer{
+   background-color: #556B2F;
+}
+.syumu {
+    cursor: pointer;
+    color:rgb(255, 255, 255);
+    text-decoration: none;
+    text-transform: uppercase;
+}
+.syum {
+    cursor: pointer;
+    color:#556B2F;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+.messages {
+    display: none;
+}
+.form-rounded {
+border-radius: 1rem;
+}
+.sender{
+    color:#556B2F;
+    margin-left: 550px;
+}
+.sender > p{
+    background: rgb(155, 168, 133);
+}
+</style>
+
+
+<body>
+    <div style="margin-top:-99px;">
+        <div class="row">
+              <div class="col-md-2" style="background-color: rgba(89, 114, 46, 0.6);">
+                 <br><br>
+                 <h6 style="margin-left: 10px;color: rgba(89, 114, 46);">Message Users</h6> <br>
+                    {% for convo in convos %}
+                        <!-- <li class="syumu" id="syumu" link-data="{{convo.uuid}}/{{current_user.id}}">
+                            {{convo.uuid}}
+                        </li> -->
+
+                        <h6 style="margin-left: 10px;" class="syumu" id="syumu" link-data="{{convo.uuid}}/{{current_user.id}}" user-data={{current_user.username}}>
+                            {% for member in convo.members.all %}
+                            {% if member != current_user %}
+                            {{member.username}}
+                            {% endif %}
+                            {% endfor %}
+                        </h6>
+                    {% endfor %}
+                    
+                 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        </div>
+        <div class="col-md-8"><br>
+            <h5 style="margin-top: 20px;text-transform: uppercase;margin-left: 20px;font-weight:200;color:rgb(0, 0, 0);font-size:19px;">{{current_user.username}}</h5>
+            <br>
+    <!-- <h4><b>{{current_user.id}}</b></h4> -->
+    <!-- <ul>
+        {% for convo in convos %} -->
+            <!-- <li class="syumu" id="syumu" link-data="{{convo.uuid}}/{{current_user.id}}">
+                {{convo.uuid}}
+            </li> -->
+
+            <!-- <li class="syum" style=" cursor: pointer;color:#556B2F;text-decoration: none;text-transform: uppercase;" id="syumu" link-data="{{convo.uuid}}/{{current_user.id}}" user-data={{current_user.username}}>
+                {% for member in convo.members.all %}
+                {% if member != current_user %}
+                {{member.username}}
+                {% endif %}
+                {% endfor %}
+            </li>
+        {% endfor %}
+        </ul> -->
+                    <div id="messages">
+
+                        <ul class="m-ul" id="m-ul">
+
+                        </ul>
+                        <!-- <div style="position: fixed;"> -->
+                        <textarea id="message" placeholder="write a message" class="form-control form-rounded" rows="3"></textarea>
+                        <br>
+                        <button class="btn btn-success" style="background-color: #556B2F;" id="send">Send</button>
+                        </div>
+                </div>
+                <div class="col-md-2" style="background-color: rgba(89, 114, 46, 0.6);">
+           </div></div></div>
+<footer>
+    <div class="container-fluid py-3">
+        <div class="row">
+            <div class="col-md-3" style="font-size: 12px;">@CopyRight.2019___</div>
+            <div class="col-md-3"></div>
+            <div class="col-md-3"></div>
+            <div class="col-md-3"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-8"></div>
+            <div class="col-md-4 text-right small align-self-end"><p><a href="" style="color: black;">Privacy policy</a>   <a href="" style="color: black;">Acceptable</a>   <a href="" style="color: black;">Facebook</a>   <a href="" style="color: black;">Twitter</a> </p></div>
+        </div>
+    </div>
+</footer>
+        
+
+
+        {% block scripts %}
+        
+        <script>
+
+            $('.syumu').on("click", function() {
+                // var data = this.attr('link-data');
+                var data = $(this).attr("link-data"); 
+                var username = $(this).attr("user-data");        
+
+                    /*
+                WEBSOCKET URL FORMAT
+                ws:localhost:8000/chats/{convo_id}/{current_user_id}/{other_user_id}
+              //   */
+              // let socket = new WebSocket("ws:localhost:8000/chats/1573826051630/1/2");
+              const url = "ws:localhost:" + window.location.port +"/chats/" + data;
+              let socket = new WebSocket(url);
+              var messages;
+              var ul = document.getElementById("m-ul");
+              socket.onopen = function(e) {
+                // alert("[open] Connection established");
+                // $('.messages').show();
+                // socket.send("My name is John");
+              };
+        
+              socket.onmessage = function(event) {
+
+                  if (messages === undefined) {
+                     messages = JSON.parse(event.data);
+                  } else {
+                      messages.push(JSON.parse(event.data).data);
+                  }
+
+                
+                $('.m-ul').empty();
+
+                messages.forEach(message => {
+                    var class_name = 'sender';
+
+                    if (message.receiver === username) {
+                        class_name = 'receiver';
+                    }
+
+                    var p = document.createElement("p");
+                    p.appendChild(document.createTextNode(message.content));
+                    p.className = class_name;
+                    ul.appendChild(p);
+                });
+                
+              };
+        
+              socket.onclose = function(event) {
+                if (event.wasClean) {
+                  alert(
+                    `[close] Connection closed cleanly, code=${event.code} reason=${event.reason}`
+                  );
+                } else {
+                  // e.g. server process killed or network down
+                  // event.code is usually 1006 in this case
+                  alert("[close] Connection died");
+                }
+              };
+        
+              socket.onerror = function(error) {
+                alert(`[error] ${error.message}`);
+              };
+        
+              document.getElementById("send").addEventListener("click", function() {
+                    var inputVal = document.getElementById("message").value;
+                    var message_data = {
+                        message: inputVal
+                    };
+        
+                    socket.send(JSON.stringify(message_data));
+                    document.getElementById("message").value = "";
+                });
+            });
+
+            </script>
+        {% endblock %}
+</body>
+</html>{% endblock %}

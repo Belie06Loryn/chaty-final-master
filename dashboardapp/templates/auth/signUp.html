@@ -1,0 +1,35 @@
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<!-- Bootstrap core CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+<!-- Material Design Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.10/css/mdb.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+<style>
+.btn{
+    background-color: #556B2F;
+}
+</style>
+<!-- {% extends 'all-pages/base.html'%} -->
+{% load bootstrap4%}
+<!-- {% block content%} -->
+<div class="row" style="margin-bottom: 30px;margin-top: 30px;">
+    <div class="col-md-4"></div>
+    <div class="col-md-4" style="box-shadow: 5px 5px 7px 7px #556B2F;"><br>
+        <img src="/static/images/moringa.png" style="margin-left:10px;height:100px; width:200px;">
+        <h3 class="text-center" style="font-family: 'Source Sans Pro', sans-serif;color: #556B2F;">Send Invitation</h3>
+        <div class="card-body ">
+            <form style="color: #556B2F;" action="{% url 'signUp' %}" method="post"
+                enctype="multipart/form-data">
+                {% csrf_token %}
+                {% bootstrap_form form %}
+                <div class=" form-group">
+                    <input  type="submit" class="btn btn-success" style="background-color: #556B2F;" value="Send">
+                </div>
+            </form>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+
+
+    <!-- {% endblock%} -->

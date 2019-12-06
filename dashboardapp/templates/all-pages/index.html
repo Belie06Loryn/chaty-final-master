@@ -1,0 +1,222 @@
+{% extends 'all-pages/base.html' %}
+{% load bootstrap4 %}
+{% load staticfiles %}
+{% block content %}
+{{block.super}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+   <title>HelpDesk Automated</title>
+   <link rel="stylesheet" href="/static/css/index.css">
+   <link href="https://fonts.googleapis.com/css?family=Raleway|Source+Sans+Pro&display=swap" rel="stylesheet">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<!-- Header animation -->
+<script>
+var TxtRotate = function(el, toRotate, period) {
+   this.toRotate = toRotate;
+   this.el = el;
+   this.loopNum = 0;
+   this.period = parseInt(period, 10) || 2000;
+   this.txt = '';
+   this.tick();
+   this.isDeleting = false;
+   };
+   TxtRotate.prototype.tick = function() {
+   var i = this.loopNum % this.toRotate.length;
+   var fullTxt = this.toRotate[i];
+   if (this.isDeleting) {
+   this.txt = fullTxt.substring(0, this.txt.length - 1);
+   } else {
+   this.txt = fullTxt.substring(0, this.txt.length + 1);
+   }
+   this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+   var that = this;
+   var delta = 300 - Math.random() * 100;
+   if (this.isDeleting) { delta /= 2; }
+   if (!this.isDeleting && this.txt === fullTxt) {
+   delta = this.period;
+   this.isDeleting = true;
+   } else if (this.isDeleting && this.txt === '') {
+   this.isDeleting = false;
+   this.loopNum++;
+   delta = 500;
+   }
+   setTimeout(function() {
+   that.tick();
+   }, delta);
+   };
+   window.onload = function() {
+   var elements = document.getElementsByClassName('txt-rotate');
+   for (var i=0; i<elements.length; i++) {
+   var toRotate = elements[i].getAttribute('data-rotate');
+   var period = elements[i].getAttribute('data-period');
+   if (toRotate) {
+      new TxtRotate(elements[i], JSON.parse(toRotate), period);
+   }
+   }
+   // INJECT CSS
+   var css = document.createElement("style");
+   css.type = "text/css";
+   css.innerHTML = ".txt-rotate > .wrap { border-right: 0.08em solid #666 }";
+   document.body.appendChild(css);
+   };
+</script>
+<style>
+    /* Media Queries: Tablet Landscape */
+@media screen and (max-width: 1060px) {
+    #primary { width:67%; }
+    #secondary { width:30%; margin-left:3%;}  
+}
+
+/* Media Queries: Tabled Portrait */
+@media screen and (max-width: 768px) {
+    #primary { width:100%; }
+    #secondary { width:100%; margin:0; border:none; }
+}
+.wells{
+   position: relative;
+   background-color: rgba(82, 124, 43, 0.3);
+   width: 1290px ;
+   height:439px;
+   top: -98px;
+   color: rgb(0, 0, 0);
+   float: left;
+}
+.well{
+   background-color: rgba(255, 255, 255);
+   width: 1290px;
+}
+footer{
+   background-color: #556B2F;
+}
+
+.card {
+    position: relative;
+    flex: 1 1 100%;
+    margin: 31px 0;
+    padding: 30px;
+    background: white;
+}
+
+@media screen and (min-width: 1550px) {
+    .card {
+        flex-basis: calc(33.33% - (62px + 40px));
+        margin: 0 21px;
+    }
+}
+
+.card__thumb {
+    overflow: hidden;
+}
+
+.card__img {
+    margin: -20px -20px 0;
+    height: 600px;
+}
+
+.card__img img {
+    max-width: 100%;
+    height: auto;
+    border: 0;
+    vertical-align: middle;
+    box-sizing: border-box;
+}
+
+.card__desc {
+    margin-top: 20px;
+}
+
+.card__two .card__img {
+    padding: 20px;
+}
+
+.card__one {
+    transition: transform .5s;
+}
+
+.card__one::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: opacity 2s cubic-bezier(0.165, 0.84, 0.44, 1);
+    box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.15);
+    content: '';
+    opacity: 0;
+    z-index: -1;
+}
+
+.card__one:hover, .card__one:focus {
+    transform: scale3d(1.006, 1.006, 1);
+}
+
+.card__one:hover::after, .card__one:focus::after {
+    opacity: 1;
+}
+.btn {
+  background-color: #556B2F;
+}
+h1:hover {
+  color: #556B2F;
+}
+</style>
+<body style="background-image: url(/static/images/Outsourcing-Development-Work_CoolCat-Digital-1400x605.jpg);background-repeat: no-repeat;background-size: 100% 100%;position: absolute;background-attachment: fixed;">
+<div class="wells">
+    <div class="row">
+   <div class="col-md-1"></div>
+   <div class="col-md-4" style="margin-top:100px;margin-left:200px;font-family: 'Raleway', sans-serif;
+   transform: translateX(-50%) rotate(-5deg);">
+      <h1><span class="title txt-rotate" data-period="2000" data-rotate='["Women in Technology"]'></span></h1><br>
+      <p style="font-size: 20px;font-family: 'Raleway', sans-serif;">Training Our Next Young Women Generation of Tech Leaders,</p>
+   </div>
+   <div class="col-md-7"></div>
+</div>
+</div><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<div class="well" style="font-family: 'Raleway', sans-serif;">
+   <h1 style="text-align: center;">COURSES PACKAGES</h1>
+   <div class="container">
+        <div class="row">
+                <!-- <div class="col-md-1"></div> -->
+                  {% for categ in categories %}
+                  <div class="col-md-1"></div>            
+                  <div class="col-md-3">
+                     <div class="card card__one">
+                        <figure class="card__img">
+                           <img src="{{categ.category_image.url}}"  class="card-img-top">
+                           <div class="card-body">
+                              <h5 class="card-title"> {{categ.category_name}} </h5>
+                              <p class="card-text">{{categ.description}}</p>
+                              <a href="{% url 'cate' categ.id%}" class="btn btn-success">More...</a> 
+                           </div>
+                        </figure>
+                     </div> 
+                  </div>
+                  {% endfor %}            
+                  <div class="col-md-1"></div>
+               </div> 
+   </div><br>
+       <h3 style="text-align: center;font-family: 'Raleway', sans-serif;">"A better way to collaborate,help each other and share knowledge"</h3>
+ 
+<footer>
+      <div class="container-fluid py-3">
+          <div class="row">
+              <div class="col-md-3"></div>
+              <div class="col-md-3"></div>
+              <div class="col-md-3"></div>
+              <div class="col-md-3"></div>
+          </div>
+          <div class="row">
+              <div class="col-md-8" style="font-size: 12px;">@CopyRight.2019___</div>
+              <div class="col-md-4 text-right small align-self-end"><p><a href="" style="color: black;">Privacy policy</a>   <a href="" style="color: black;">Acceptable</a>   <a href="" style="color: black;">Facebook</a>   <a href="" style="color: black;">Twitter</a> </p></div>
+          </div>
+      </div>
+  </footer></div>
+</body>
+</html>
+{% endblock %} 

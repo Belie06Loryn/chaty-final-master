@@ -1,0 +1,103 @@
+{% extends 'all-pages/base.html' %}
+{% load bootstrap4 %} 
+{% load staticfiles %}
+{% block content %}
+{{block.super}}
+<!DOCTYPE html>
+  <html>
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+       <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.10/css/mdb.min.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="/static/css/index.css">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+      <title>Upload</title>
+      {{form.media}}
+    
+      {% block styles %} 
+      {% bootstrap_css %}
+      <link rel="stylesheet" href="{% static 'css/base.css' %}"> 
+      {% endblock %}
+    
+    </head>
+    <style>
+      /* Media Queries: Tablet Landscape */
+    @media screen and (max-width: 1060px) {
+        #primary { width:67%; }
+        #secondary { width:30%; margin-left:3%;}  
+    }
+    
+    /* Media Queries: Tabled Portrait */
+    @media screen and (max-width: 768px) {
+        #primary { width:100%; }
+        #secondary { width:100%; margin:0; border:none; }
+    }
+    footer{
+       background-color: #556B2F;
+    }
+    </style>
+<body>
+    <div style="margin-top:-99px;">
+        <div class="row">
+           <div class="col-md-2" style="background-color: rgba(89, 114, 46, 0.6);">
+              
+           </div>
+             <div class="col-md-8">
+              <ul class="nav nav-tabs" role="tablist">
+                 <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="{% url 'profile' user.id %}" style="color:#556B2F;">Profile</a>
+                 </li>
+                 <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="{% url 'new_profile'%}" style="color:#556B2F;">Edit Profile</a>
+                 </li>
+              </ul><br><br>
+              <div class="col-sm-7">
+    <div class="card" style="box-shadow: 5px 5px 7px 7px #556B2F;margin-left: 100px;"><br>
+      <span><h3 class="text-center" style="font-family: 'Source Sans Pro', sans-serif;color: #556B2F;">Make Your Profile</h3></span>
+      <div class="card-body">
+  <form  action="{%url 'new_profile'%}" style="color: #556B2F;" method="post" enctype="multipart/form-data">
+    {%csrf_token%}
+    {% bootstrap_form form%}
+    <input type="submit" class="btn btn-success" style="background-color: #556B2F;" value="Post">
+  </form>
+   {% block scripts %}
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  {% bootstrap_javascript %} {% endblock %}
+</div>
+</div>
+</div><br><br>
+</div>
+
+
+<div class="col-md-2" style="background-color: rgba(89, 114, 46, 0.6);">
+         
+</div></div></div>
+  <footer>
+    <div class="container-fluid py-3">
+        <div class="row">
+            <div class="col-md-3" style="font-size: 12px;">@CopyRight.2019___</div>
+            <div class="col-md-3"></div>
+            <div class="col-md-3"></div>
+            <div class="col-md-3"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-8"></div>
+            <div class="col-md-4 text-right small align-self-end"><p><a href="" style="color: black;">Privacy policy</a>   <a href="" style="color: black;">Acceptable</a>   <a href="" style="color: black;">Facebook</a>   <a href="" style="color: black;">Twitter</a> </p></div>
+        </div>
+    </div>
+</footer>
+</body>
+
+</html>
+{% endblock %} 

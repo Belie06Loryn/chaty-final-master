@@ -1,0 +1,28 @@
+                    List of relations
+ Schema |             Name              | Type  | Owner  
+--------+-------------------------------+-------+--------
+ public | auth_group                    | table | wecode
+ public | auth_group_permissions        | table | wecode
+ public | auth_permission               | table | wecode
+ public | auth_user                     | table | wecode
+ public | auth_user_groups              | table | wecode
+ public | auth_user_user_permissions    | table | wecode
+ public | convos_convo                  | table | wecode
+ public | convos_convo_members          | table | wecode
+ public | convos_message                | table | wecode
+ public | dashboard_userdashboardmodule | table | wecode
+ public | dashboardapp_answer           | table | wecode
+ public | dashboardapp_approved         | table | wecode
+ public | dashboardapp_category         | table | wecode
+ public | dashboardapp_invitation       | table | wecode
+ public | dashboardapp_profile          | table | wecode
+ public | dashboardapp_question         | table | wecode
+ public | dashboardapp_vote             | table | wecode
+ public | django_admin_log              | table | wecode
+ public | django_content_type           | table | wecode
+ public | django_migrations             | table | wecode
+ public | django_session                | table | wecode
+ public | jet_bookmark                  | table | wecode
+ public | jet_pinnedapplication         | table | wecode
+(23 rows)
+

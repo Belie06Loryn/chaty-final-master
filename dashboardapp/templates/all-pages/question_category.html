@@ -1,0 +1,237 @@
+
+
+{% extends 'all-pages/base.html' %}
+{% load bootstrap4 %}
+{% load staticfiles %}
+{% block content %}
+{{block.super}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+   <title>HelpDesk Automated</title>
+   <link rel="stylesheet" href="/static/css/index.css">
+   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> -->
+   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+   <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+   <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<style>
+/* Search */
+input {
+	outline: none;
+}
+input[type=search] {
+	-webkit-appearance: textfield;
+	box-sizing: content-box;
+	font-family: inherit;
+	font-size: 100%;
+}
+input::-webkit-search-decoration,
+input::-webkit-search-cancel-button {
+	display: none; 
+}
+input[type=search] {
+	background: #ffffff url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
+	border: solid 1px #ccc;
+	padding: 6px 10px 6px 28px;
+	width: 110px;
+	margin-left: 20px;
+	-webkit-border-radius: 10em;
+	-moz-border-radius: 10em;
+	border-radius: 10em;
+	
+	-webkit-transition: all .5s;
+	-moz-transition: all .5s;
+	transition: all .5s;
+}
+input[type=search]:focus {
+	width: 130px;
+	background-color: #fff;
+	border-color: #66CC75;
+	margin-left: 20px;
+	-webkit-box-shadow: 0 0 5px rgba(109,207,246,.5);
+	-moz-box-shadow: 0 0 5px rgba(109,207,246,.5);
+	box-shadow: 0 0 5px rgba(109,207,246,.5);
+}
+input:-moz-placeholder {
+	color: #999;
+}
+input::-webkit-input-placeholder {
+	color: #999;
+}
+.profile{
+   border-radius: 700px;
+   width: 80px;
+   height: 80px;
+   margin-left: 20px;
+   margin-top: 20px;
+}
+h5{
+   margin-left: 30px;
+}
+h2{
+   margin-top: 30px;
+   text-align: center;
+}
+h6{
+   text-align: center;
+}
+footer{
+   background-color: #556B2F;
+}
+.button {
+  background-color: #556B2F;
+  border: none;
+  color: white;
+  padding: 18px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  margin-left: 30px;
+  height: 50px;
+}
+/* Message Button */
+.btn3d {
+	position: relative;
+	top: -6px;
+	border: 0;
+	transition: all 40ms linear;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-left: 17px;
+	margin-right: 2px;
+}
+
+.btn3d:active:focus,
+.btn3d:focus:hover,
+.btn3d:focus {
+	outline-style: none;
+	outline: medium none;
+}
+
+.btn3d:active,
+.btn3d.active {
+	top: 2px;
+}
+
+.btn3d.btn-success {
+	box-shadow: 0 0 0 1px #556B2F inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 8px 0 0 #556B2F, 0 8px 8px 1px rgba(0, 0, 0, 0.5);
+	background-color: #556B2F;
+}
+
+.btn3d.btn-success:active,
+.btn3d.btn-success.active {
+	box-shadow: 0 0 0 1px #556B2F inset, 0 0 0 1px rgba(255, 255, 255, 0.15) inset, 0 1px 3px 1px rgba(0, 0, 0, 0.3);
+	background-color: #556B2F;
+}
+/*Profile card 2*/
+.card-img-block{
+   float:left;
+   width:108%;
+   height:100px;
+   overflow:hidden;
+}
+.card-body{
+   position:relative;
+}
+.profile{
+   border-radius: 700px;
+   width: 80px;
+   height: 80px;
+   margin-left: 20px;
+   margin-top: 20px;
+}
+.profile {
+  border-radius: 75%;
+  position: absolute;
+  top: 42px;
+  left: 20%;;
+  max-width: 85px;
+  border: 3px solid rgba(255, 255, 255, 1);
+  -webkit-transform: translate(-50%, 0%);
+  transform: translate(-50%, 0%);
+}
+h5{
+   margin-top: 104px;
+   font-weight:200;
+   color:#556B2F;
+   font-size:19px;
+}
+</style>
+<body>
+<div style="margin-top:-99px;">
+      <div class="row">
+            <div class="col-md-2" style="background-color: rgba(89, 114, 46, 0.6);">
+               <div>
+                  <div class="card-img-block">
+                     <img class="img-fluid" src="https://images.pexels.com/photos/870903/pexels-photo-870903.jpeg?w=940&h=650&auto=compress&cs=tinysrgb" alt="Card image cap">
+                  </div>
+                  <div class="card-body pt-5">
+                     <img src="https://randomuser.me/api/portraits/men/64.jpg" alt="profile-image" class="profile"/>
+                     <h5 class="card-title">Landon Hunt</h5>
+                  </div>
+               </div>
+               <br>
+         <form>
+            <input type="search" placeholder="Find Someone">
+         </form>
+         <br><br><br><br><br><br><br><br><br><br><br>
+         <p>
+            <button type="button" class="btn btn-success btn-lg btn3d"><span class="glyphicon glyphicon-send"></span></button>
+         </p>
+      </div>
+      <div class="col-md-8">
+         <h2>Questions in {{q_category.category_name}}</h2>
+         <ul class="nav nav-tabs" role="tablist" style="width:260px;float:right;">
+            <li class="nav-item">
+               <a class="nav-link active" data-toggle="tab" href="#home" style="color:#556B2F;">All</a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" data-toggle="tab" href="#menu1" style="color:#556B2F;">Unanswered</a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" data-toggle="tab" href="#menu2" style="color:#556B2F;">Votes</a>
+            </li>
+         </ul><br><br><br><br>
+         {% for  question in questions %}
+         <a href="{% url 'q_answer' question.id%}" style="color:#556B2F;text-decoration: none;"><p> {{question.title}} </p></a>
+         
+          {% endfor%}             
+     
+      </div>
+      <div class="col-md-2">
+         <a href="{% url 'questions' %}" class="btn btn-success" style="background-color: #556B2F;">Ask a question</a>
+        <br><br><br><br><br>
+        
+      </div>
+   </div>
+   
+</div>
+
+<footer>
+      <div class="container-fluid py-3">
+          <div class="row">
+              <div class="col-md-3" style="font-size: 12px;">@CopyRight.2019___</div>
+              <div class="col-md-3"></div>
+              <div class="col-md-3"></div>
+              <div class="col-md-3"></div>
+          </div>
+          <div class="row">
+              <div class="col-md-8"></div>
+              <div class="col-md-4 text-right small align-self-end"><p><a href="" style="color: black;">Privacy policy</a>   <a href="" style="color: black;">Acceptable</a>   <a href="" style="color: black;">Facebook</a>   <a href="" style="color: black;">Twitter</a> </p></div>
+          </div>
+      </div>
+  </footer>
+</body>
+</html>
+{% endblock %} 

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+  <title>HelpDesk Automated</title>
+  <link rel="stylesheet" href="/static/css/index.scss">
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<style>
+/* Search */
+input {
+	outline: none;
+}
+input[type=search] {
+	-webkit-appearance: textfield;
+	box-sizing: content-box;
+	font-family: inherit;
+	font-size: 100%;
+}
+input::-webkit-search-decoration,
+input::-webkit-search-cancel-button {
+	display: none; 
+}
+input[type=search] {
+	background: #ffffff url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
+	border: solid 1px #ccc;
+	padding: 9px 10px 9px 32px;
+	width: 55px;
+	
+	-webkit-border-radius: 10em;
+	-moz-border-radius: 10em;
+	border-radius: 10em;
+	
+	-webkit-transition: all .5s;
+	-moz-transition: all .5s;
+	transition: all .5s;
+}
+input[type=search]:focus {
+	width: 130px;
+	background-color: #fff;
+	border-color: #66CC75;
+	
+	-webkit-box-shadow: 0 0 5px rgba(109,207,246,.5);
+	-moz-box-shadow: 0 0 5px rgba(109,207,246,.5);
+	box-shadow: 0 0 5px rgba(109,207,246,.5);
+}
+
+
+input:-moz-placeholder {
+	color: #999;
+}
+input::-webkit-input-placeholder {
+	color: #999;
+}
+.navbar{
+  background-color: rgb(255, 255, 255);
+}
+</style>
+<body>
+<nav class="navbar navbar-expand-sm">
+  <a class="navbar-brand" href="{% url 'page' %}">
+    <img src="/static/images/imageonline-co-whitebackgroundremoved (3).png" style="width: 150px;height: 60px;">
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-list-2" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbar-list-2">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" style="color: #556B2F;" href="{% url 'page' %}">Home <span class="sr-only">(current)</span></a>
+      </li>
+      
+      <li class="nav-item">
+          <a class="nav-link" style="color: #556B2F;" href="{% url 'learn' %}">Learn</a>
+        </li>
+        {% if user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link" style="color: #556B2F;" href="{% url 'profile' user.id%}">Profile</a>
+        </li>
+        {% endif %}
+      <li class="nav-item">
+        <a class="nav-link" style="color: #556B2F;" href="{% url 'chats' %}">Chats</a>
+      </li>
+    </ul>
+  </div>
+ 
+  <form action="{% url 'search' %}">
+    <input type="search" name="question" placeholder="Search">
+  </form>
+</nav>
+</body>
+</html>
