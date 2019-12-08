@@ -66,7 +66,7 @@
     <div class="card" style="box-shadow: 5px 5px 7px 7px #556B2F;margin-left: 100px;"><br>
       <span><h3 class="text-center" style="font-family: 'Source Sans Pro', sans-serif;color: #556B2F;">Make Your Profile</h3></span>
       <div class="card-body">
-  <form  action="{%url 'new_profile'%}" style="color: #556B2F;" method="post" enctype="multipart/form-data">
+  <form  action="{% url 'new_profile'%}" style="color: #556B2F;" method="post" enctype="multipart/form-data">
     {%csrf_token%}
     {% bootstrap_form form%}
     <input type="submit" class="btn btn-success" style="background-color: #556B2F;" value="Post">

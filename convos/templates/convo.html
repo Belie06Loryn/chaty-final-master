@@ -87,7 +87,7 @@ footer{
     cursor: pointer;
     color:rgb(255, 255, 255);
     text-decoration: none;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
 }
 .syum {
     cursor: pointer;
@@ -116,25 +116,26 @@ border-radius: 1rem;
         <div class="row">
               <div class="col-md-2" style="background-color: rgba(89, 114, 46, 0.6);">
                  <br><br>
-                 <h6 style="margin-left: 10px;color: rgba(89, 114, 46);">Message Users</h6> <br>
+                 <h6 style="margin-left: 10px;color: rgba(89, 114, 46);text-transform: uppercase;">Message Users</h6> 
+                
                     {% for convo in convos %}
                         <!-- <li class="syumu" id="syumu" link-data="{{convo.uuid}}/{{current_user.id}}">
                             {{convo.uuid}}
                         </li> -->
 
-                        <h6 style="margin-left: 10px;" class="syumu" id="syumu" link-data="{{convo.uuid}}/{{current_user.id}}" user-data={{current_user.username}}>
+                        <p style="margin-left: 25px;" class="syumu" id="syumu" link-data="{{convo.uuid}}/{{current_user.id}}" user-data={{current_user.username}}>
                             {% for member in convo.members.all %}
                             {% if member != current_user %}
-                            {{member.username}}
+                            {{member.username}}<br>
                             {% endif %}
                             {% endfor %}
-                        </h6>
+                        </p>
                     {% endfor %}
                     
                  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
         </div>
         <div class="col-md-8"><br>
-            <h5 style="margin-top: 20px;text-transform: uppercase;margin-left: 20px;font-weight:200;color:rgb(0, 0, 0);font-size:19px;">{{current_user.username}}</h5>
+            <h5 style="margin-top: 20px;margin-left: 20px;color:rgb(0, 0, 0);"><i class="fa fa-circle" aria-hidden="true" style="color: rgb(29, 46, 1);size: 2px 2px;"></i>{{current_user.username}}</h5>
             <br>
     <!-- <h4><b>{{current_user.id}}</b></h4> -->
     <!-- <ul>

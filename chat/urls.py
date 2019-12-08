@@ -24,8 +24,7 @@ urlpatterns = [
     # path('accounts/', include('registration.backends.simple.urls')),
     path('logout/', views.LogoutView.as_view(), {"next_page": '/'}), 
     path('jet/', include('jet.urls', 'jet')),
-    path('jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),  
-    # path('admin/', admin.site.urls),
+    path('jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),
     
 
 ]

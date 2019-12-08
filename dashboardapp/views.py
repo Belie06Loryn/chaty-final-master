@@ -18,7 +18,7 @@ def page(request):
     categories = Category.objects.all()
     return render(request,'all-pages/index.html',{"categories": categories})
 
-# @login_required(login_url='/accounts/login/')
+@login_required(login_url='/accounts/login/')
 def question_category(request, id):
     q_category = Category.objects.filter(id = id).first()
     questions = Question.objects.filter(category = q_category.id).all()
@@ -60,7 +60,7 @@ def post_question(request):
             post = form.save(commit=False)
             post.user = current_user
             post.save()
-            return redirect('learn')
+            return redirect('learn',current_user.id)
 
     else:
         form = NewQuestionForm()
@@ -167,7 +167,7 @@ def approve_answer(request, id):
             approveAnswer.answer = answer
             approveAnswer.question=question
             approveAnswer.save()
-            return redirect('learn')
+            return redirect('learn',current_user.id)
     else:
         form = AnswerForm()
     return render(request, 'all-pages/answer.html',{"form":form, "id":id,'question':question,'answer':answer} )

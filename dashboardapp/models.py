@@ -60,15 +60,6 @@ class Answer(models.Model):
     def __str__(self):
         return self.answer
 
-class Approved(models.Model):
-    name=models.OneToOneField(Profile,on_delete=models.CASCADE)
-    answer=models.OneToOneField(Answer,on_delete=models.CASCADE)
-    approve=models.BooleanField()
-    score=models.IntegerField()
-
-    def __str__(self):
-        return self.name.user.username
-
 class Vote(models.Model):
     name=models.ForeignKey(Profile,on_delete=models.CASCADE)
     answer=models.ForeignKey(Answer,on_delete=models.CASCADE)

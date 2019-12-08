@@ -17,6 +17,7 @@ urlpatterns = [
     url(r'^search/$',views.search_question, name = 'search'),
     url(r'^cate/(\d+)/$', views.question_category, name='cate'),
     url(r'^answer/(\d+)$', views.post_answer, name='answer'),
+    url(r'^approve/(\d+)$', views.approve_answer, name='approve'),
     url(r'^q_answer/(\d+)/$', views.question_answer, name='q_answer'),
     url(r'^upvotes/(\d+)/$',views.upvotes,name = 'upvotes'),
     url(r'^downvotes/(\d+)/$',views.downvotes,name = 'downvotes'),

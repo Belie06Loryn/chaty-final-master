@@ -196,7 +196,7 @@
             <img src="https://img.icons8.com/cute-clipart/64/000000/double-tick.png" width='30px' height='30px'>
             {% else %}
              {% if questions.user.id == request.user.id  %}
-             <form  action="{%url 'approve' answer.id %}" style="color: #556B2F;" method="post" enctype="multipart/form-data">
+             <form  action="{% url 'approve' answer.id %}" style="color: #556B2F;" method="post" enctype="multipart/form-data">
                 {%csrf_token%}
                  {% bootstrap_form form%}
                 <input type="submit" class="btn btn-success" type="submit" style="background-color: #556B2F;" value="approve">
