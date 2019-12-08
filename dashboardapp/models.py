@@ -75,6 +75,6 @@ class Invitation(models.Model):
 
 class Approved(models.Model):
     approve=models.BooleanField()
-    question=models.ForeignKey(Question, on_delete=models.CASCADE)
-    answer=models.OneToOneField(Answer, on_delete=models.CASCADE)
+    question=models.ForeignKey(Question, on_delete=models.CASCADE,null=True)
+    answer=models.OneToOneField(Answer, on_delete=models.CASCADE,null=True)
 
